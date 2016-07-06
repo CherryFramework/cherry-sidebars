@@ -1,0 +1,5 @@
+<wpml-config>
+	<custom-fields>
+		<custom-field action="copy">post_sidebar</custom-field>
+	</custom-fields>
+</wpml-config>
