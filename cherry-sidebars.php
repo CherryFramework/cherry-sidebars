@@ -58,11 +58,9 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			// Set the constants needed by the plugin.
 			add_action( 'plugins_loaded', array( $this, 'constants' ), 0 );
 
-			// @TODO
 			// Load the installer core.
 			add_action( 'after_setup_theme', require( trailingslashit( __DIR__ ) . 'cherry-framework/setup.php' ), 0 );
 
-			// @TODO
 			// Load the core functions/classes required by the rest of the theme.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
 			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
@@ -89,7 +87,6 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 */
 		function constants() {
 
-			// @TODO check this
 			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			}
