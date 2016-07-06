@@ -2,11 +2,10 @@
 /**
  * Class for render and saving custom sidebars.
  *
- * @package   Cherry_Custom_Sidebar
- * @author    Cherry Team
- * @license   GPL-2.0+
- * @link      http://www.cherryframework.com/
- * @copyright 2015 Cherry Team
+ * @package   Cherry_Sidebars
+ * @author    Template Monster
+ * @license   GPL-3.0+
+ * @copyright 2002-2016, Template Monster
  **/
 
 // If this file is called directly, abort.
@@ -227,4 +226,3 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 
 	Cherry_Custom_Sidebar::get_instance();
 }
-?>

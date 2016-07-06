@@ -2,11 +2,10 @@
 /**
  * Cherry Sidebar Utils.
  *
- * @package   Cherry Sidebar Manager
- * @author    Cherry Team
- * @license   GPL-2.0+
- * @link      http://www.cherryframework.com/
- * @copyright 2016 Cherry Team
+ * @package   Cherry_Sidebars
+ * @author    Template Monster
+ * @license   GPL-3.0+
+ * @copyright 2002-2016, Template Monster
  **/
 
 // If this file is called directly, abort.
@@ -44,7 +43,7 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 		 */
 		function __construct() {
 			$this->current_theme = wp_get_theme();
-			$this->get_theme_option = get_option( $this->current_theme . '_sidbars', array() );
+			$this->get_theme_option = get_option( $this->current_theme . '_sidebars', array() );
 		}
 
 		/**
@@ -74,7 +73,7 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 
 			$this->get_theme_option['custom_sidebar'] = $new_custom_sidebar_array;
 
-			update_option( $this->current_theme . '_sidbars', $this->get_theme_option );
+			update_option( $this->current_theme . '_sidebars', $this->get_theme_option );
 		}
 	}
 }

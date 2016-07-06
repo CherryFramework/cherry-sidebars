@@ -1,4 +1,4 @@
-( function( jQuery ) {
+( function( $ ) {
 	'use strict';
 
 	// Form Handling Module
@@ -29,28 +29,28 @@
 			// Init variable
 			var formHandling = this;
 
-			formHandling.form = jQuery( '#cherry-sidebars-form' );
-			formHandling.submitButton = jQuery( '#sidebar-manager-submit', formHandling.form );
-			formHandling.spinner = jQuery( '.spinner-wordpress-type-1', formHandling.form );
-			formHandling.errorMessage = jQuery( '#cherry-error-message', formHandling.form );
-			formHandling.customSidebarHolder1 = jQuery( '#cherry-sidebars-holder .sidebars-column-1' );
-			formHandling.customSidebarHolder2 = jQuery( '#cherry-sidebars-holder .sidebars-column-2' );
-			formHandling.btnNewSidebar = jQuery( '.btn-create-sidebar.thickbox' );
-			formHandling.btnRemoveSidebar = jQuery( '.cherry-delete-sidebar-manager' );
+			formHandling.form = $( '#cherry-sidebars-form' );
+			formHandling.submitButton = $( '#sidebar-manager-submit', formHandling.form );
+			formHandling.spinner = $( '.spinner-wordpress-type-1', formHandling.form );
+			formHandling.errorMessage = $( '#cherry-error-message', formHandling.form );
+			formHandling.customSidebarHolder1 = $( '#cherry-sidebars-holder .sidebars-column-1' );
+			formHandling.customSidebarHolder2 = $( '#cherry-sidebars-holder .sidebars-column-2' );
+			formHandling.btnNewSidebar = $( '.btn-create-sidebar.thickbox' );
+			formHandling.btnRemoveSidebar = $( '.cherry-delete-sidebar-manager' );
 
 			// Added handler
 			formHandling.submitButton.on( 'click', formHandling.submitByttonHandler );
 			formHandling.btnNewSidebar.on( 'click', formHandling.openThickBox );
 			formHandling.btnRemoveSidebar.on( 'click', formHandling.removeCustomSidebar );
 
-			jQuery.ajaxSetup( {
+			$.ajaxSetup( {
 				type: 'GET',
 				url: window.ajaxurl,
 				cache: false
 			} );
 		},
 		openThickBox: function() {
-			jQuery( 'input[type="text"]', formHandling.form ).removeClass( 'error-invalid' );
+			$( 'input[type="text"]', formHandling.form ).removeClass( 'error-invalid' );
 		},
 		submitByttonHandler: function() {
 
@@ -62,7 +62,7 @@
 
 			for ( key in formData ) {
 				object = formData[ key ];
-				input = jQuery( 'input[name="' + object.name + '"]', formHandling.form );
+				input = $( 'input[name="' + object.name + '"]', formHandling.form );
 
 				if ( ! object.value && input.hasClass( 'required' ) ) {
 					input.addClass( 'error-invalid' );
@@ -71,7 +71,7 @@
 				}
 			}
 
-			if ( ! jQuery( '.error-invalid', formHandling.form )[0] ) {
+			if ( ! $( '.error-invalid', formHandling.form )[0] ) {
 				formHandling.newSidebarData.formdata = formData;
 				formHandling.aJaxRequestNewSitebar();
 			}
@@ -81,7 +81,7 @@
 		aJaxRequestNewSitebar: function() {
 
 			// Add new sidebar aJax request
-			formHandling.ajaxRequest = jQuery.ajax( {
+			formHandling.ajaxRequest = $.ajax( {
 				data: formHandling.newSidebarData,
 				beforeSend: function() {
 					formHandling.submitButton.attr( { 'disabled':true } );
@@ -92,9 +92,9 @@
 					}
 				},
 				success: function( response ) {
-					var sidebarCounter1 = jQuery( '.widgets-holder-wrap', formHandling.customSidebarHolder1 ).length,
-						sidebarCounter2 = jQuery( '.widgets-holder-wrap', formHandling.customSidebarHolder2 ).length,
-						newSidebar = jQuery( response );
+					var sidebarCounter1 = $( '.widgets-holder-wrap', formHandling.customSidebarHolder1 ).length,
+						sidebarCounter2 = $( '.widgets-holder-wrap', formHandling.customSidebarHolder2 ).length,
+						newSidebar = $( response );
 
 					if ( sidebarCounter1 <= sidebarCounter2 ) {
 						formHandling.customSidebarHolder1.append( newSidebar );
@@ -102,17 +102,17 @@
 						formHandling.customSidebarHolder2.append( newSidebar );
 					}
 
-					jQuery( '.cherry-delete-sidebar-manager', newSidebar ).on( 'click', formHandling.removeCustomSidebar );
+					$( '.cherry-delete-sidebar-manager', newSidebar ).on( 'click', formHandling.removeCustomSidebar );
 
-					jQuery( 'input[type="text"]', formHandling.form ).val( '' );
-					jQuery( '.tb-close-icon' ).trigger( 'click' );
+					$( 'input[type="text"]', formHandling.form ).val( '' );
+					$( '.tb-close-icon' ).trigger( 'click' );
 
-					jQuery( '#widgets-right .sidebar-name' ).unbind( 'click' );
-					jQuery( '#widgets-left .sidebar-name' ).unbind( 'click' );
-					jQuery( document.body ).unbind( 'click.widgets-toggle' );
-					jQuery( '.widgets-chooser' ).off( 'click.widgets-chooser' ).off( 'keyup.widgets-chooser' );
-					jQuery( '#available-widgets .widget .widget-title' ).off( 'click.widgets-chooser' );
-					jQuery( '.widgets-chooser-sidebars' ).empty();
+					$( '#widgets-right .sidebar-name' ).unbind( 'click' );
+					$( '#widgets-left .sidebar-name' ).unbind( 'click' );
+					$( document.body ).unbind( 'click.widgets-toggle' );
+					$( '.widgets-chooser' ).off( 'click.widgets-chooser' ).off( 'keyup.widgets-chooser' );
+					$( '#available-widgets .widget .widget-title' ).off( 'click.widgets-chooser' );
+					$( '.widgets-chooser-sidebars' ).empty();
 
 					if ( window.wpWidgets ) {
 						window.wpWidgets.init();
@@ -130,19 +130,19 @@
 
 		// Remove button handler
 		removeCustomSidebar: function() {
-			var customSidebar = jQuery( this ).parents( '.cherry-widgets-holder-wrap' );
+			var customSidebar = $( this ).parents( '.cherry-widgets-holder-wrap' );
 
-			formHandling.removeSidebarData.id = jQuery( '.widgets-sortables', customSidebar ).attr( 'id' );
+			formHandling.removeSidebarData.id = $( '.widgets-sortables', customSidebar ).attr( 'id' );
 
-			formHandling.aJaxRequestremoveSitebar( customSidebar );
+			formHandling.requestRemoveSidebar( customSidebar );
 		},
 
 		// Remove sidebar aJax request
-		aJaxRequestremoveSitebar: function( sidebar ) {
-			formHandling.ajaxRequest = jQuery.ajax( {
+		requestRemoveSidebar: function( sidebar ) {
+			formHandling.ajaxRequest = $.ajax( {
 				data: formHandling.removeSidebarData,
 				beforeSend: function() {
-					jQuery( '.cherry-spinner-wordpress', sidebar ).css( { 'display':'block' } );
+					$( '.cherry-spinner-wordpress', sidebar ).css( { 'display':'block' } );
 				},
 				success: function() {
 					sidebar.remove();
@@ -151,16 +151,16 @@
 		}
 	};
 
-	jQuery( document ).ready( function() {
+	$( document ).ready( function() {
 
 		formHandling.init();
 
 		// Add handler on sidebar wrapper title
-		jQuery( 'body:not(.widgets_access) .sidebar-manager-name' ).on( 'click', function() {
-			var _this = jQuery( this );
+		$( 'body:not(.widgets_access) .sidebar-manager-name' ).on( 'click', function() {
+			var _this = $( this );
 
-			jQuery( '~ .sidebars-holder', _this ).toggleClass( 'closed' );
-			jQuery( '.sidebar-name-arrow', _this ).toggleClass( 'closed-arrow' );
+			$( '~ .sidebars-holder', _this ).toggleClass( 'closed' );
+			$( '.sidebar-name-arrow', _this ).toggleClass( 'closed-arrow' );
 		} );
 
 	});

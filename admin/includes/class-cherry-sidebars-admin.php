@@ -2,11 +2,10 @@
 /**
  * Sets up the admin functionality for the plugin.
  *
- * @package   Cherry Sidebars
- * @author    Cherry Team
- * @license   GPL-2.0+
- * @link      http://www.cherryframework.com/
- * @copyright 2016 Cherry Team
+ * @package   Cherry_Sidebars
+ * @author    Template Monster
+ * @license   GPL-3.0+
+ * @copyright 2002-2016, Template Monster
  */
 
  // If this file is called directly, abort.

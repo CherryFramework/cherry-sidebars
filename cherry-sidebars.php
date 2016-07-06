@@ -4,17 +4,17 @@
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Plugin for creating and managing sidebars in WordPress.
  * Version:     1.0.0
- * Author:      Cherry Team
- * Author URI:  http://www.cherryframework.com/
+ * Author:      Template Monster
+ * Author URI:  http://www.templatemonster.com/
  * Text Domain: cherry-sidebars
  * License:     GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path: /languages
  *
- * @package  Cherry Sidebars
- * @category Core
- * @author   Cherry Team
- * @license  GPL-3.0+
+ * @package   Cherry_Sidebars
+ * @author    Template Monster
+ * @license   GPL-3.0+
+ * @copyright 2002-2016, Template Monster
  */
 
 // If this file is called directly, abort.
@@ -131,6 +131,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 * @since 1.0.0
 		 */
 		function includes() {
+			require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebar-utils.php' );
 			require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebars-admin.php' );
 			require_once( CHERRY_SIDEBARS_DIR . 'public/includes/classes/class-cherry-include-sidebars.php' );
 		}
@@ -151,8 +152,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 */
 		function admin() {
 			if ( is_admin() ) {
-				require_once( CHERRY_SIDEBARS_DIR . 'admin/views/cherry-sidebars-to-page.php' );
-				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebar-manager-admin.php' );
+				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-custom-sidebar.php' );
 			}
 		}
 
