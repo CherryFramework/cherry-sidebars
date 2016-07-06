@@ -1,1 +1,7 @@
 **/*.min.js
+cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-select/assets/select2.js
+cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-collection/assets/js/jquery.collection.js
+
+#Cherry Framework
+cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-media/assets/ui-media.js
+cherry-framework/modules/cherry-js-core/assets/js/cherry-js-core.js

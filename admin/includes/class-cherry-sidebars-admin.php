@@ -8,7 +8,7 @@
  * @copyright 2002-2016, Template Monster
  */
 
- // If this file is called directly, abort.
+// If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die();
 }

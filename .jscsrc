@@ -2,6 +2,19 @@
 	"preset": "wordpress",
 	"fileExtensions": [ ".js" ],
 	"excludeFiles": [
-		"**/*.min.js"
+		"**/*.min.js",
+		"cherry-framework/modules/cherry-js-core/assets/js/cherry-js-core.js",
+		"cherry-framework/modules/cherry-post-formats-api/assets/js/cherry-post-formats.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-checkbox/assets/ui-checkbox.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-colorpicker/assets/ui-colorpicker.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-media/assets/ui-media.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-radio/assets/ui-radio.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-select/assets/select2.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-select/assets/ui-select.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-slider/assets/ui-slider.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-stepper/assets/ui-stepper.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-switcher/assets/ui-switcher.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-collection/assets/js/jquery.collection.js",
+		"cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-collection/assets/js/ui-collection.js",
 	]
 }
