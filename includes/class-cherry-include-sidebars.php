@@ -53,13 +53,15 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 
 			$post_sidebars = get_post_meta( apply_filters( 'cherry_sidebar_manager_object_id', $object_id ), 'post_sidebar', true );
 
-			if ( $post_sidebars && !empty( $post_sidebars ) ) {
+			if ( $post_sidebars && ! empty( $post_sidebars ) ) {
 
 				$instance = new Cherry_Sidebar_Utils();
 				$custom_sidebar = $instance->get_custom_sidebar_array();
 
 				foreach ( $post_sidebars as $sidebar => $sidebar_value ) {
-					if ( '' !==$sidebar_value && array_key_exists( $sidebar_value, $custom_sidebar ) && isset( $widgets[ $sidebar ] ) ) {
+					if ( ! empty( $sidebar_value ) &&
+						 array_key_exists( $sidebar_value, $custom_sidebar ) &&
+						 isset( $widgets[ $sidebar ] ) ) {
 						$widgets[ $sidebar ] = $widgets[ $sidebar_value ];
 					}
 				}

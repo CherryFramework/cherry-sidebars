@@ -133,7 +133,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		function includes() {
 			require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebar-utils.php' );
 			require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebars-admin.php' );
-			require_once( CHERRY_SIDEBARS_DIR . 'public/includes/classes/class-cherry-include-sidebars.php' );
+			require_once( CHERRY_SIDEBARS_DIR . 'includes/class-cherry-include-sidebars.php' );
 		}
 
 		/**
@@ -201,7 +201,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			if ( is_admin() ) {
 				$this->get_core()->init_module( 'cherry-js-core' );
 				$this->get_core()->init_module( 'cherry-ui-elements', array(
-					'ui_elements' =>array(
+					'ui_elements' => array(
 						'text',
 						'select',
 					),

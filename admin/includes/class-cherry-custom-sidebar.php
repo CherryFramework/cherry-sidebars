@@ -44,7 +44,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 			add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 
 			// Registrate dynamic sidebar
-			add_action( 'register_sidebar', array( $this, 'register_dynamic_sidebar' ));
+			add_action( 'register_sidebar', array( $this, 'register_dynamic_sidebar' ) );
 		}
 
 		/**
@@ -57,9 +57,21 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * @return void
 		 */
 		public function add_meta_boxes( $post_type, $post ) {
-			$allowed_post_type = apply_filters( 'cherry_sidebar_post_type', array( 'page', 'post', 'portfolio', 'testimonial', 'service', 'team', 'product', 'product',  ) );
+			$allowed_post_types = apply_filters(
+				'cherry_sidebar_post_type',
+				array(
+					'page',
+					'post',
+					'portfolio',
+					'testimonial',
+					'service',
+					'team',
+					'product',
+					'product',
+				)
+			);
 
-			if ( in_array( $post_type, $allowed_post_type )
+			if ( in_array( $post_type, $allowed_post_types )
 					&& ( current_user_can( 'edit_post_meta', $post->ID )
 					|| current_user_can( 'add_post_meta', $post->ID )
 					|| current_user_can( 'delete_post_meta', $post->ID ) )
@@ -130,7 +142,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 
 				$value = ( is_array( $select_sidebar ) && array_key_exists( $sidebar_value['id'], $select_sidebar ) ) ? $select_sidebar[ $sidebar_value['id'] ] : '' ;
 
-				$UI_Select = new UI_Select(
+				$ui_select = new UI_Select(
 					array(
 						'id' => $sidebar_value['id'],
 						'name' => 'theme_sidebar[' . $sidebar_value['id'] . ']',
@@ -140,17 +152,29 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 					)
 				);
 
-				$output .= $UI_Select->render();
+				$output .= $ui_select->render();
 
 				echo $output;
 			};
 
 			?>
-				<p class="howto"><?php printf( __( 'You can choose page sidebars or create a new sidebar on %swidgets page%s .', 'cherry-sidebars' ), '<a href="widgets.php" target="_blank" title="' . __( 'Widgets Page', 'cherry-sidebars' ) . '">', '</a>' )?></p>
+				<p class="howto">
+					<?php printf(
+						__( 'You can choose page sidebars or create a new sidebar on %swidgets page%s .', 'cherry-sidebars' ),
+						'<a href="widgets.php" target="_blank" title="' . __( 'Widgets Page', 'cherry-sidebars' ) . '">',
+						'</a>'
+					); ?>
+				</p>
 			<?php
 		}
 
-		public function register_dynamic_sidebar(){
+		/**
+		 * Register dynamic sidebar.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function register_dynamic_sidebar() {
 			global $wp_registered_sidebars;
 
 			$instance = new Cherry_Sidebar_Utils();
@@ -186,8 +210,6 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 
 			// Get the all submitted `page-sidebar-manager` data.
 			$sidebar_id = $_POST['theme_sidebar'];
-
-			//$sidebar_id = array( 'cherry-post-main-sidebar' => $_POST['cherry-post-main-sidebar'], 'cherry-post-secondary-sidebar' => $_POST['cherry-post-secondary-sidebar'] );
 
 			update_post_meta( $post_id, $meta_key, $sidebar_id );
 		}

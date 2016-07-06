@@ -64,6 +64,7 @@ if ( ! function_exists( 'cherry_sidebars_register_sidebar' ) ) {
 
 		/**
 		 * Register the sidebar.
+		 *
 		 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
 		 */
 		return register_sidebar( $args );
