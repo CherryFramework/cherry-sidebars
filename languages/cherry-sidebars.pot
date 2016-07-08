@@ -1,0 +1,80 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: blank\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-08 11:05+0300\n"
+"PO-Revision-Date: 2015-10-23 11:35+0200\n"
+"Last-Translator: Vladimir Anokhin <ano.vladimir@gmail.com>\n"
+"Language-Team: Cherry Team <support@cherryframework.com>\n"
+"Language: su\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;__;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/includes/class-cherry-custom-sidebar.php:87
+msgid "Post Sidebars"
+msgstr ""
+
+#: admin/includes/class-cherry-custom-sidebar.php:126
+msgid "Sidebar not selected"
+msgstr ""
+
+#: admin/includes/class-cherry-custom-sidebar.php:163
+#, php-format
+msgid ""
+"You can choose page sidebars or create a new sidebar on %swidgets page%s ."
+msgstr ""
+
+#: admin/includes/class-cherry-custom-sidebar.php:164
+msgid "Widgets Page"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:21
+msgid "Create a new custom sidebar"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:30
+msgid "Sidebar name:"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:43
+msgid "Sidebar description:"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:51
+msgid "Create Sidebar"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:55
+msgid "Cannot add new custom sidebar"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:63
+msgid "Default Sidebars"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:66
+msgid "Default sidebars created in child theme code itself."
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:72
+msgid "Cherry Sidebars"
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:75
+msgid ""
+"You can create a custom sidebar and enable it for any page or post. This can "
+"be done on page editing stage."
+msgstr ""
+
+#: admin/views/cherry-widgets-page.php:76
+msgid "Create a new sidebar"
+msgstr ""
