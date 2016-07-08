@@ -2,11 +2,11 @@
 /**
  * Cherry Sidebar Utils.
  *
- * @package   Cherry_Sidebars
- * @author    Template Monster
- * @license   GPL-3.0+
+ * @package Cherry_Sidebars
+ * @author Template Monster
+ * @license GPL-3.0+
  * @copyright 2002-2016, Template Monster
- **/
+ */
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
