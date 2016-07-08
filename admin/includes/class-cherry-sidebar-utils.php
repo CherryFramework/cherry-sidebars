@@ -10,7 +10,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+	die();
 }
 
 if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 		/**
 		 * Get current sidebars theme settings.
 		 *
-		 * @since 1.0.0
+		 * @since  1.0.0
 		 * @return array Current sidebar settings.
 		 */
 		public function get_custom_sidebar_array() {
@@ -66,9 +66,9 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 		/**
 		 * Updated custom sidebars array and save to database.
 		 *
-		 * @since 1.0.0
-		 * @param array $new_custom_sidebar_array New theme sidebar settings.
-		 * @return  void
+		 * @since  1.0.0
+		 * @param  array $new_custom_sidebar_array New theme sidebar settings.
+		 * @return void
 		 */
 		public function set_custom_sidebar_array( $new_custom_sidebar_array ) {
 
