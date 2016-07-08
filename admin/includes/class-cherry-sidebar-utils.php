@@ -2,9 +2,9 @@
 /**
  * Cherry Sidebar Utils.
  *
- * @package   Cherry_Sidebars
- * @author    Template Monster
- * @license   GPL-3.0+
+ * @package Cherry_Sidebars
+ * @author Template Monster
+ * @license GPL-3.0+
  * @copyright 2002-2016, Template Monster
  */
 
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 		public $get_theme_option;
 
 		/**
- 		 * Sets up our actions/filters or another settings.
+		 * Sets up our actions/filters or another settings.
 		 *
 		 * @since 1.0.0
 		 */
@@ -71,7 +71,7 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 		 */
 		public function set_custom_sidebar_array( $new_custom_sidebar_array ) {
 
-			$this->get_theme_option[ 'custom_sidebar' ] = $new_custom_sidebar_array;
+			$this->get_theme_option['custom_sidebar'] = $new_custom_sidebar_array;
 
 			update_option( $this->current_theme . '_sidebars', $this->get_theme_option );
 		}
