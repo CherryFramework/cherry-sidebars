@@ -53,6 +53,7 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 		 * @return array Current sidebar settings.
 		 */
 		public function get_custom_sidebar_array() {
+
 			if ( ! is_array( $this->get_theme_option ) || ! array_key_exists( 'custom_sidebar', $this->get_theme_option ) ) {
 				$custom_sidebar_array = array();
 			} else {

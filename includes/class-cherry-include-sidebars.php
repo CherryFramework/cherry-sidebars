@@ -43,6 +43,8 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 		 * @return array
 		 */
 		public function set_custom_sidebar( $widgets ) {
+			global $wp_registered_sidebars;
+
 			$object_id = get_queried_object_id();
 
 			if ( function_exists( 'is_shop' ) ) {
@@ -60,7 +62,7 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 
 				foreach ( $post_sidebars as $sidebar => $sidebar_value ) {
 					if ( ! empty( $sidebar_value ) &&
-						 array_key_exists( $sidebar_value, $custom_sidebar ) &&
+						 ( array_key_exists( $sidebar_value, $wp_registered_sidebars ) || array_key_exists( $sidebar_value, $custom_sidebar ) ) &&
 						 isset( $widgets[ $sidebar ] ) ) {
 						$widgets[ $sidebar ] = $widgets[ $sidebar_value ];
 					}

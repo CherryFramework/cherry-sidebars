@@ -107,14 +107,16 @@
 					$( 'input[type="text"]', formHandling.form ).val( '' );
 					$( '.tb-close-icon' ).trigger( 'click' );
 
-					$( '#widgets-right .sidebar-name' ).unbind( 'click' );
-					$( '#widgets-left .sidebar-name' ).unbind( 'click' );
-					$( document.body ).unbind( 'click.widgets-toggle' );
+					$( '#widgets-right .sidebar-name' ).off( 'click' );
+					$( '#widgets-left .sidebar-name' ).off( 'click' );
+					$( 'body' ).off( 'click.widgets-toggle' );
 					$( '.widgets-chooser' ).off( 'click.widgets-chooser' ).off( 'keyup.widgets-chooser' );
 					$( '#available-widgets .widget .widget-title' ).off( 'click.widgets-chooser' );
-					$( '.widgets-chooser-sidebars' ).empty();
+
+					$( '.widgets-chooser-sidebars > li' ).remove();
 
 					if ( window.wpWidgets ) {
+						window.wpWidgets.hoveredSidebar = null;
 						window.wpWidgets.init();
 					}
 				},
