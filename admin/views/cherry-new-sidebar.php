@@ -90,17 +90,17 @@ if ( ! function_exists( 'cherry_sidebars_add_custom_sidebar' ) ) {
 		global $wp_registered_sidebars;
 
 		$instance = new Cherry_Sidebar_Utils();
-		$cusotm_sidebar_array = $instance->get_custom_sidebar_array();
+		$custom_sidebar_array = $instance->get_custom_sidebar_array();
 
 		$form_data = isset( $_GET['formdata'] ) ? $_GET['formdata'] : $formdata ;
 
-		if ( ! array_key_exists( 'cherry-sidebars-counter', $cusotm_sidebar_array ) ) {
-			$cusotm_sidebar_array['cherry-sidebars-counter'] = 0;
+		if ( ! array_key_exists( 'cherry-sidebars-counter', $custom_sidebar_array ) ) {
+			$custom_sidebar_array['cherry-sidebars-counter'] = 0;
 		} else {
-			$cusotm_sidebar_array['cherry-sidebars-counter'] += 1;
+			$custom_sidebar_array['cherry-sidebars-counter'] += 1;
 		}
 
-		$id = $cusotm_sidebar_array['cherry-sidebars-counter'];
+		$id = $custom_sidebar_array['cherry-sidebars-counter'];
 		$args = array(
 			'name' => $form_data[0]['value'],
 			'id' => 'cherry-sidebars-' . $id,
@@ -108,14 +108,14 @@ if ( ! function_exists( 'cherry_sidebars_add_custom_sidebar' ) ) {
 			'dynamic-sidebar' => true,
 		);
 		$registrate_custom_sidebar = cherry_sidebars_register_sidebar( $args );
-		$cusotm_sidebar_array[ 'cherry-sidebars-' . $id ] = $wp_registered_sidebars[ $registrate_custom_sidebar ];
+		$custom_sidebar_array[ 'cherry-sidebars-' . $id ] = $wp_registered_sidebars[ $registrate_custom_sidebar ];
 	?>
 		<div class="widgets-holder-wrap closed cherry-widgets-holder-wrap">
 			<div class='cherry-delete-sidebar-manager'>
 				<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
 				<span class="dashicons dashicons-trash"></span>
 			</div>
-			<div id="<?php echo esc_attr( 'cherry-sidebars-sidebar-' . $id ) ?>" class="widgets-sortables ui-sortable cherry-sidebars-manager">
+			<div id="<?php echo esc_attr( 'cherry-sidebars-' . $id ) ?>" class="widgets-sortables ui-sortable cherry-sidebars-manager">
 				<div class="sidebar-name">
 					<div class="sidebar-name-arrow"><br></div>
 					<h2><?php echo esc_html( $form_data[0]['value'] ) ?><span class="spinner"></span></h2>
@@ -126,7 +126,7 @@ if ( ! function_exists( 'cherry_sidebars_add_custom_sidebar' ) ) {
 			</div>
 		</div>
 	<?php
-		$instance->set_custom_sidebar_array( $cusotm_sidebar_array );
+		$instance->set_custom_sidebar_array( $custom_sidebar_array );
 		wp_die();
 	}
 }
@@ -153,10 +153,10 @@ if ( ! function_exists( 'cherry_sidebars_remove_custom_sidebar' ) ) {
 		$id = isset( $_GET['id'] ) ? $_GET['id'] : $id ;
 
 		$instance = new Cherry_Sidebar_Utils();
-		$cusotm_sidebar_array = $instance->get_custom_sidebar_array();
-		unset( $cusotm_sidebar_array[ $id ] );
+		$custom_sidebar_array = $instance->get_custom_sidebar_array();
+		unset( $custom_sidebar_array[ $id ] );
 
-		$instance->set_custom_sidebar_array( $cusotm_sidebar_array );
+		$instance->set_custom_sidebar_array( $custom_sidebar_array );
 	}
 }
 
