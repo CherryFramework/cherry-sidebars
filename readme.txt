@@ -23,6 +23,10 @@ The plugin can be useful for certain posts or pages, where you want your content
 
 == Screenshots ==
 
+1. An example of two custom sidebars with the widgets.
+2. The form for creating a sidebar. Simply specify name and description for your new sidebar.
+3. This is the sidebar manager panel that allows you to assign one of the sidebars to the current page.
+
 == Configuration ==
 
 = Creating a new sidebar =
