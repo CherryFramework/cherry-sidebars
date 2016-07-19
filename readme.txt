@@ -31,6 +31,11 @@ The plugin can be useful for certain posts or pages, where you want your content
 3. Fill in all required form fields and click the "Create Sidebar" button.
 4. After that you will be able to drag'n'drop your widgets into the new sidebar.
 
+= Managing sidebars on pages =
+* Open your page or post in editing mode.
+* In the right bottom corner of the page you will see sidebar manager panel that allows you to assign one of the sidebars to the current page.
+* For instance you can display widgets from the sidebar you've created in Primary Sidebar area.
+
 == Changelog ==
 
 = 1.0.0 =
