@@ -67,7 +67,6 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 					'service',
 					'team',
 					'product',
-					'product',
 				)
 			);
 
