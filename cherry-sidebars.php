@@ -64,7 +64,6 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			// Load the core functions/classes required by the rest of the theme.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
 			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
-			add_action( 'after_setup_theme', array( $this, 'init_modules' ), 3 );
 
 			// Internationalize the text strings used.
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 3 );
@@ -190,20 +189,18 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		}
 
 		/**
-		 * Run initialization of modules.
+		 * Init modules.
 		 *
-		 * @since 1.2.0
+		 * @since 1.0.0
 		 */
-		public function init_modules() {
-			if ( is_admin() ) {
-				$this->get_core()->init_module( 'cherry-js-core' );
-				$this->get_core()->init_module( 'cherry-ui-elements', array(
-					'ui_elements' => array(
-						'text',
-						'select',
-					),
-				) );
-			}
+		function init_modules() {
+			cherry_sidebars()->get_core()->init_module( 'cherry-js-core' );
+			cherry_sidebars()->get_core()->init_module( 'cherry-ui-elements', array(
+				'ui_elements' => array(
+					'text',
+					'select',
+				),
+			) );
 		}
 
 		/**
@@ -240,6 +237,19 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			return self::$instance;
 		}
 	}
-
-	Cherry_Sidebars::get_instance();
 }
+
+if ( ! function_exists( 'cherry_sidebars' ) ) {
+
+	/**
+	 * Returns instanse of the plugin class.
+	 *
+	 * @since  1.0.0
+	 * @return object
+	 */
+	function cherry_sidebars() {
+		return Cherry_Sidebars::get_instance();
+	}
+}
+
+cherry_sidebars();

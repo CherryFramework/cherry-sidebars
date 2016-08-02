@@ -57,6 +57,9 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * @return void
 		 */
 		public function add_meta_boxes( $post_type, $post ) {
+
+			cherry_sidebars()->init_modules();
+
 			$allowed_post_types = apply_filters(
 				'cherry_sidebar_post_type',
 				array(
@@ -117,6 +120,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * @return void
 		 */
 		public function callback_metabox( $post, $metabox ) {
+			cherry_sidebars()->init_modules();
 			wp_nonce_field( basename( __FILE__ ), 'cherry-sidebar-nonce' );
 
 			global $wp_registered_sidebars;

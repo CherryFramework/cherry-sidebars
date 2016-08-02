@@ -43,7 +43,11 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 		 * @return array
 		 */
 		public function set_custom_sidebar( $widgets ) {
-			global $wp_registered_sidebars;
+			global $wp_registered_sidebars, $wp_query;
+
+			if ( ! is_object( $wp_query ) ) {
+				return $widgets;
+			}
 
 			$object_id = get_queried_object_id();
 
