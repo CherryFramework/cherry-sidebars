@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Sidebars
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Plugin for creating and managing sidebars in WordPress.
- * Version:     1.0.0
+ * Version:     1.0.2
  * Author:      Template Monster
  * Author URI:  http://www.templatemonster.com/
  * Text Domain: cherry-sidebars
