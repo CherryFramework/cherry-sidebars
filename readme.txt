@@ -3,7 +3,7 @@
 Contributors: TemplateMonster 2002
 Tags: sidebar, sidebar manager, cherry framework, custom sidebars, widget area, group widgets, page custom sidebar, post custom sidebar
 Requires at least: 4.4
-Tested up to: 4.5.3
+Tested up to: 4.6
 Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
