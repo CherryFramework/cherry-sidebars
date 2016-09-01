@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Sidebars
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Plugin for creating and managing sidebars in WordPress.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      Template Monster
  * Author URI:  http://www.templatemonster.com/
  * Text Domain: cherry-sidebars
@@ -63,7 +63,6 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 
 			// Load the core functions/classes required by the rest of the theme.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
-			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
 
 			// Internationalize the text strings used.
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 3 );
@@ -166,12 +165,17 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			 */
 			do_action( 'cherry_core_before' );
 
+			global $chery_core_version;
+
 			if ( null !== $this->core ) {
 				return $this->core;
 			}
 
-			if ( ! class_exists( 'Cherry_Core' ) ) {
-				require_once( CHERRY_SIDEBARS_DIR . '/cherry-framework/cherry-core.php' );
+			if ( 0 < sizeof( $chery_core_version ) ) {
+				$core_paths = array_values( $chery_core_version );
+				require_once( $core_paths[0] );
+			} else {
+				die( 'Class Cherry_Core not found' );
 			}
 
 			$this->core = new Cherry_Core( array(
