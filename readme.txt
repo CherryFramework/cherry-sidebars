@@ -42,6 +42,20 @@ The plugin can be useful for certain posts or pages, where you want your content
 
 == Changelog ==
 
+= 1.0.3 =
+
+* UPD: Update Cherry Framework up to 1.1.1
+
+= 1.0.2 =
+
+* FIX: Custom sidebars option name
+
+= 1.0.1 =
+
+* FIX: sidebar_widgets filter should check WP_Query (WooCommerce Ajax navigation)
+* FIX: assets initialization
+* FIX: remove duplicates from allowed post types list
+
 = 1.0.0 =
 
 * Initial release
