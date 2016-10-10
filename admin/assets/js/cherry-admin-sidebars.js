@@ -52,7 +52,7 @@
 		openThickBox: function() {
 			$( 'input[type="text"]', formHandling.form ).removeClass( 'error-invalid' );
 		},
-		submitByttonHandler: function() {
+		submitByttonHandler: function( $event ) {
 
 			// Validated form
 			var formData = formHandling.form.serializeArray(),
@@ -60,11 +60,13 @@
 				object,
 				input;
 
+			formHandling.errorMessage.css( { 'display':'none' } );
+
 			for ( key in formData ) {
 				object = formData[ key ];
 				input = $( 'input[name="' + object.name + '"]', formHandling.form );
 
-				if ( ! object.value && input.hasClass( 'required' ) ) {
+				if ( ! object.value ) {
 					input.addClass( 'error-invalid' );
 				} else {
 					input.removeClass( 'error-invalid' );
@@ -74,6 +76,8 @@
 			if ( ! $( '.error-invalid', formHandling.form )[0] ) {
 				formHandling.newSidebarData.formdata = formData;
 				formHandling.aJaxRequestNewSitebar();
+			} else {
+				formHandling.errorMessage.css( { 'display':'block' } ).delay( 3000 ).fadeOut( 800, 0 );
 			}
 
 			return ! 1;
