@@ -1,5 +1,5 @@
 ( function( $ ) {
-	'use strict';
+'use strict';
 
 	// Form Handling Module
 	var formHandling = {
