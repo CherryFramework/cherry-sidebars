@@ -5,7 +5,7 @@
  * Description: Plugin for creating and managing sidebars in WordPress.
  * Version:     1.0.5
  * Author:      Template Monster
- * Author URI:  http://www.templatemonster.com/
+ * Author URI:  http://www.cherryframework.com/git st
  * Text Domain: cherry-sidebars
  * License:     GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
