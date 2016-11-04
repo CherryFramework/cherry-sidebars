@@ -1,2 +1,0 @@
-# cherry-framework
-Module system.
