@@ -163,8 +163,8 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 			?>
 				<p class="howto">
 					<?php printf(
-						__( 'You can choose page sidebars or create a new sidebar on %swidgets page%s .', 'cherry-sidebars' ),
-						'<a href="widgets.php" target="_blank" title="' . __( 'Widgets Page', 'cherry-sidebars' ) . '">',
+						esc_html__( 'You can choose page sidebars or create a new sidebar on %1$s widgets page %2$s.', 'cherry-sidebars' ),
+						'<a href="widgets.php" target="_blank" title="' . esc_html__( 'Widgets Page', 'cherry-sidebars' ) . '">',
 						'</a>'
 					); ?>
 				</p>

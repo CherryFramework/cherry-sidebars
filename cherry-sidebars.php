@@ -3,9 +3,9 @@
  * Plugin Name: Cherry Sidebars
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Plugin for creating and managing sidebars in WordPress.
- * Version:     1.0.4
- * Author:      Template Monster
- * Author URI:  http://www.templatemonster.com/
+ * Version:     1.0.5
+ * Author:      Cherry Team
+ * Author URI:  http://www.cherryframework.com/git st
  * Text Domain: cherry-sidebars
  * License:     GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -59,7 +59,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'constants' ), 0 );
 
 			// Load the installer core.
-			add_action( 'after_setup_theme', require( trailingslashit( __DIR__ ) . 'cherry-framework/setup.php' ), 0 );
+			add_action( 'after_setup_theme', require( trailingslashit( dirname( __FILE__ ) ) . 'cherry-framework/setup.php' ), 0 );
 
 			// Load the core functions/classes required by the rest of the theme.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
