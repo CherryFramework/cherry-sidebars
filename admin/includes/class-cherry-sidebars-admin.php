@@ -58,18 +58,13 @@ class Cherry_Sidebars_Admin {
 			wp_register_script( 'cherry_admin_sidebars_js', trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/js/min/cherry-admin-sidebars.min.js', array( 'jquery' ), CHERRY_SIDEBARS_VERSION, true );
 			wp_register_style( 'cherry_admin_sidebars_css', trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/css/cherry-admin-sidebars.css', array(), CHERRY_SIDEBARS_VERSION, 'all' );
 
-			wp_register_style( 'interface-builder', trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/css/interface-builder.css', array(), CHERRY_SIDEBARS_VERSION, 'all' );
+			//wp_register_style( 'interface-builder', trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/css/interface-builder.css', array(), CHERRY_SIDEBARS_VERSION, 'all' );
 
 			$cherry_framework_object = array( 'ajax_nonce_new_sidebar' => wp_create_nonce( 'new_custom_sidebar' ) , 'ajax_nonce_remove_sidebar' => wp_create_nonce( 'remove_custom_sidebar' ) );
 			wp_localize_script( 'cherry_admin_sidebars_js', 'cherryFramework', $cherry_framework_object );
 
 			wp_enqueue_script( 'cherry_admin_sidebars_js' );
 			wp_enqueue_style( 'cherry_admin_sidebars_css' );
-			wp_enqueue_style( 'interface-builder' );
-
-		} elseif ( false !== strpos( $hook_suffix, 'post' ) ) {
-			wp_register_style( 'cherry-sidebars-post-page', trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/css/cherry-sidebars-post-page.css', array(), CHERRY_SIDEBARS_VERSION, 'all' );
-			wp_enqueue_style( 'cherry-sidebars-post-page' );
 		}
 	}
 

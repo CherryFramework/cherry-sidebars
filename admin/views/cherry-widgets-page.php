@@ -30,6 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 							'label'			=> __( 'Sidebar name:', 'cherry-sidebars' ),
 						)
 					);
+					$ui_text->enqueue_assets();
 					echo $ui_text->render();
 				?>
 			</div>
