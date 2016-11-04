@@ -26,6 +26,13 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 		private static $instance = null;
 
 		/**
+		 * Holder for processed sidebar.
+		 *
+		 * @var array
+		 */
+		private $processed = array();
+
+		/**
 		 * Sets up our actions/filters.
 		 *
 		 * @since 1.0.0
@@ -69,11 +76,29 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 						 ( array_key_exists( $sidebar_value, $wp_registered_sidebars ) || array_key_exists( $sidebar_value, $custom_sidebar ) ) &&
 						 isset( $widgets[ $sidebar ] ) ) {
 						$widgets[ $sidebar ] = $widgets[ $sidebar_value ];
+						$this->processed[ $sidebar ] = $sidebar_value;
+						add_filter( 'cherry_sidebars_custom_id', array( $this, 'set_processed' ) );
 					}
 				}
 			}
 
 			return $widgets;
+		}
+
+		/**
+		 * Pass new sidebar ID by third party request.
+		 *
+		 * @since  1.0.4
+		 * @param  string $id Original sidebar id.
+		 * @return string.
+		 */
+		public function set_processed( $id ) {
+
+			if ( empty( $this->processed[ $id ] ) ) {
+				return $id;
+			}
+
+			return $this->processed[ $id ];
 		}
 
 		/**
