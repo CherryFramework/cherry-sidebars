@@ -5,7 +5,6 @@
 	var formHandling = {
 		submitButton: null,
 		spinner: null,
-		errorMessage: null,
 		form: null,
 		btnNewSidebar: null,
 		btnRemoveSidebar: null,
@@ -32,7 +31,6 @@
 			formHandling.form = $( '#cherry-sidebars-form' );
 			formHandling.submitButton = $( '#sidebar-manager-submit', formHandling.form );
 			formHandling.spinner = $( '.spinner-wordpress-type-1', formHandling.form );
-			formHandling.errorMessage = $( '#cherry-error-message', formHandling.form );
 			formHandling.customSidebarHolder1 = $( '#cherry-sidebars-holder .sidebars-column-1' );
 			formHandling.customSidebarHolder2 = $( '#cherry-sidebars-holder .sidebars-column-2' );
 			formHandling.btnNewSidebar = $( '.btn-create-sidebar.thickbox' );
@@ -52,15 +50,12 @@
 		openThickBox: function() {
 			$( 'input[type="text"]', formHandling.form ).removeClass( 'error-invalid' );
 		},
-		submitByttonHandler: function() {
-
+		submitByttonHandler: function( event ) {
 			// Validated form
 			var formData = formHandling.form.serializeArray(),
 				key,
 				object,
 				input;
-
-			formHandling.errorMessage.css( { 'display':'none' } );
 
 			for ( key in formData ) {
 				object = formData[ key ];
@@ -76,8 +71,6 @@
 			if ( ! $( '.error-invalid', formHandling.form )[0] ) {
 				formHandling.newSidebarData.formdata = formData;
 				formHandling.aJaxRequestNewSitebar();
-			} else {
-				formHandling.errorMessage.css( { 'display':'block' } ).delay( 3000 ).fadeOut( 800, 0 );
 			}
 
 			return ! 1;
@@ -102,8 +95,10 @@
 			formHandling.ajaxRequest = $.ajax( {
 				data: formHandling.newSidebarData,
 				beforeSend: function() {
-					formHandling.submitButton.attr( { 'disabled':true } );
-					formHandling.spinner.css( { 'display':'block' } );
+					//formHandling.submitButton.attr( { 'disabled':true } );
+					//formHandling.spinner.css( { 'display':'block' } );
+
+					formHandling.disableButton( formHandling.submitButton );
 
 					if ( formHandling.ajaxRequest ) {
 						formHandling.ajaxRequest.abort();
@@ -128,11 +123,7 @@
 					formHandling.reInitWidgets();
 				},
 				complete: function() {
-					formHandling.spinner.delay( 200 ).css( { 'display':'none' } );
-					formHandling.submitButton.attr( { 'disabled':false } );
-				},
-				error: function() {
-					formHandling.errorMessage.css( { 'display':'block' } ).delay( 3000 ).fadeOut( 800, 0 );
+					formHandling.enableButton( formHandling.submitButton );
 				}
 			} );
 		},
@@ -151,13 +142,22 @@
 			formHandling.ajaxRequest = $.ajax( {
 				data: formHandling.removeSidebarData,
 				beforeSend: function() {
-					$( '.cherry-spinner-wordpress', sidebar ).css( { 'display':'block' } );
+					$( '.cherry-loader-wrapper', sidebar ).addClass( 'show' );
 				},
 				success: function() {
 					sidebar.remove();
 					formHandling.reInitWidgets();
 				}
 			} );
+		},
+		disableButton: function( button ) {
+			$( button )
+				.attr( 'disabled', 'disabled' );
+		},
+
+		enableButton: function( button ) {
+			$( button )
+				.removeAttr( 'disabled' );
 		}
 	};
 

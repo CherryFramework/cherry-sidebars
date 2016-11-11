@@ -58,20 +58,26 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			// Set the constants needed by the plugin.
 			add_action( 'plugins_loaded', array( $this, 'constants' ), 0 );
 
-			// Load the installer core.
-			add_action( 'after_setup_theme', require( trailingslashit( dirname( __FILE__ ) ) . 'cherry-framework/setup.php' ), 0 );
+			// Internationalize the text strings used.
+			add_action( 'plugins_loaded', array( $this, 'lang' ), 1 );
 
-			// Load the core functions/classes required by the rest of the theme.
+			// Load the installer core.
+			add_action( 'after_setup_theme', require( trailingslashit( __DIR__ ) . 'cherry-framework/setup.php' ), 0 );
+
+			// Load the core functions/classes required by the rest of the plugin.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
 
-			// Internationalize the text strings used.
-			add_action( 'plugins_loaded', array( $this, 'lang' ), 3 );
+			// Laad the modules.
+			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
 
 			// Load the functions files.
-			add_action( 'plugins_loaded', array( $this, 'includes' ), 4 );
+			add_action( 'after_setup_theme', array( $this, 'includes' ),3 );
 
 			// Load the admin files.
-			add_action( 'plugins_loaded', array( $this, 'admin' ), 5 );
+			add_action( 'after_setup_theme', array( $this, 'admin' ), 4 );
+
+			// Init modules
+			add_action( 'after_setup_theme', array( $this, 'init_modules' ), 10 );
 
 			// Register activation and deactivation hook.
 			register_activation_hook( __FILE__, array( $this, 'activation' ) );
@@ -84,7 +90,6 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 * @since 1.0.0
 		 */
 		function constants() {
-
 			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			}
@@ -126,8 +131,6 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 * @since 1.0.0
 		 */
 		function includes() {
-			require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebar-utils.php' );
-			require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebars-admin.php' );
 			require_once( CHERRY_SIDEBARS_DIR . 'includes/class-cherry-include-sidebars.php' );
 		}
 
@@ -146,9 +149,11 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 * @since 1.0.0
 		 */
 		function admin() {
-			if ( is_admin() ) {
+			//if ( is_admin() ) {
+				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebar-utils.php' );
+				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebars-admin.php' );
 				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-custom-sidebar.php' );
-			}
+		//	}
 		}
 
 		/**
@@ -163,7 +168,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			 *
 			 * @since  1.1.0
 			 */
-			do_action( 'cherry_core_before' );
+			do_action( 'cherry_sidebsrs_core_before' );
 
 			global $chery_core_version;
 
@@ -183,7 +188,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 				'base_url' => CHERRY_SIDEBARS_URI . 'cherry-framework',
 				'modules'  => array(
 					'cherry-js-core' => array(
-						'autoload' => false,
+						'autoload' => true,
 					),
 					'cherry-ui-elements' => array(
 						'autoload' => false,
@@ -199,12 +204,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 */
 		function init_modules() {
 			cherry_sidebars()->get_core()->init_module( 'cherry-js-core' );
-			cherry_sidebars()->get_core()->init_module( 'cherry-ui-elements', array(
-				'ui_elements' => array(
-					'text',
-					'select',
-				),
-			) );
+			cherry_sidebars()->get_core()->init_module( 'cherry-ui-elements' );
 		}
 
 		/**

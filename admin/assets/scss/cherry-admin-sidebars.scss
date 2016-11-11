@@ -76,8 +76,13 @@
 	form#cherry-sidebars-form{
 		border-top: 1px solid #d4d5d6;
 		.cherry-section{
-			padding: 15px;
+			padding: 5px 10px;
 			border: none;
+			margin: 0;
+			box-shadow: none;
+			&.submit-wrapper{
+				text-align: right;
+			}
 			.cherry-col-1{
 				width:24%;
 				label {
@@ -86,23 +91,84 @@
 			}
 			.cherry-col-2{
 				input[type=text]{
+					box-shadow: inset 0 0 0 0px #f1f1f1;
 					&:-webkit-autofill{
 						box-shadow: inset 0 0 0 50px #fff;
 					}
 				}
 			}
 		}
-		#cherry-error-message{
-			display: none;
-			color:red;
-			position: absolute;
-			right: 170px;
-			bottom: 33px;
+		button {
+			position: relative;
+			.text {
+				transition: opacity .7s ease;
+			}
+			.loader-wrapper {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transition: opacity .5s ease, transform .5s ease;
+				transform: scale(0);
+
+				opacity: 0;
+
+				width: 20px;
+				height: 20px;
+				margin: -13px 0 0 -13px;
+			}
+			&[disabled] {
+				cursor: default;
+				pointer-events: none;
+				.text {
+					opacity: 0;
+				}
+				.cherry-loader-wrapper {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+
 		}
 	}
 }
+.cherry-loader-wrapper {
+	transform: scale(0);
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transition: opacity .5s ease, transform .5s ease;
+	width: 20px;
+	height: 20px;
+	margin: -13px 0 0 -13px;
+	&.show{
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+.cherry-loader {
+	display: block;
+
+	width: 20px;
+	height: 20px;
+
+	animation: spin .7s linear infinite;
+
+	border: 3px solid #e1e1e1;
+	border-top: 3px solid #3498DB;
+	border-radius: 50%;
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 .cherry-ui-core input[type=text].error-invalid{
-	border: 1px solid red;
+	box-shadow: inset 0px 0px 9px 0px #ff8181;
+	transition: box-shadow 0.2 s ease-in-out;
 }
 .cherry-widgets-holder-wrap{
 	position: relative;
@@ -130,10 +196,6 @@
 		height: 46px;
 		border-top: none;
 	}
-	.spinner-wordpress-type-1.cherry-spinner-wordpress{
-		right: 12px;
-		bottom: 12px;
-	}
 }
 body.widgets_access{
 	.sidebar-manager-name{
@@ -144,35 +206,6 @@ body.widgets_access{
 	}
 	.cherry-widgets-holder-wrap .cherry-delete-sidebar-manager{
 		right: -1px;
-	}
-}
-/*spinner*/
-.spinner-wordpress-type-1.cherry-spinner-wordpress{
-	display: none;
-	background-color: #f62e46;
-	width: 25px;
-	height: 25px;
-	border-radius: 30px;
-	position: absolute;
-}
-#cherry-sidebars-form{
-	.spinner-wordpress-type-1.cherry-spinner-wordpress{
-		right: 160px;
-		bottom: 28px;
-	}
-}
-.cherry-spinner-wordpress.spinner-wordpress-type-1{
-	-webkit-animation: cherry-innerCircle 1s linear infinite;
-	animation: cherry-innerCircle 1s linear infinite;
-	.cherry-inner-circle {
-		display: block;
-		background-color: #fff;
-		width: 8px;
-		height: 8px;
-		position: absolute;
-		border-radius: 8px;
-		top: 4px;
-		left: 4px;
 	}
 }
 @-webkit-keyframes cherry-innerCircle {

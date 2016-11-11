@@ -47,13 +47,22 @@ if ( ! defined( 'WPINC' ) ) {
 					echo $ui_text->render();
 				?>
 			</div>
-			<div class="cherry-section">
+			<div class="cherry-section submit-wrapper">
 				<?php
-					echo get_submit_button( __( 'Create Sidebar', 'cherry-sidebars' ), 'button-primary', 'sidebar-manager-submit', false , 'style="float:right"' );
+					$ui_button = new UI_Button(
+						array(
+							'id'         => 'sidebar-manager-submit',
+							'name'       => 'sidebar-manager-submit',
+							'value'      => 'button',
+							'form'       => '',
+							'style'      => 'normal',
+							'content'    => '<span class="text">' . esc_html__( 'Create Sidebar', 'cherry-sidebars' ) . '</span><span class="cherry-loader-wrapper"><span class="cherry-loader"></span></span>',
+							'class'      => '',
+						)
+					);
+					echo $ui_button->render();
 				?>
 			</div>
-			<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
-			<div id="cherry-error-message"><?php echo esc_html__( 'Cannot add new custom sidebar', 'cherry-sidebars' ); ?></div>
 		</form>
 	</div>
 </div>
@@ -74,7 +83,7 @@ if ( ! defined( 'WPINC' ) ) {
 	</div>
 	<div id="cherry-sidebars" class="sidebars-holder">
 			<p class="description cherry-default-description"><?php echo esc_html__( 'You can create a custom sidebar and enable it for any page or post. This can be done on page editing stage.', 'cherry-sidebars' ); ?></p>
-		<span class="cherry-ui-core"><a class="thickbox button button-default btn-create-sidebar" href="#TB_inline?width=600&height=380&inlineId=new-sidebar-manager-wrap"><?php echo esc_html__( 'Create a new sidebar', 'cherry-sidebars' ); ?></a></span>
+		<span class="cherry-ui-core"><a class="thickbox button button-default btn-create-sidebar" href="#TB_inline?width=600&height=345&inlineId=new-sidebar-manager-wrap"><?php echo esc_html__( 'Create a new sidebar', 'cherry-sidebars' ); ?></a></span>
 
 		<div id="cherry-sidebars-holder">
 			<div class="sidebars-column-1">
@@ -112,7 +121,7 @@ if ( ! defined( 'WPINC' ) ) {
 					?>
 					<div class="<?php echo esc_attr( $wrap_class ); ?> cherry-widgets-holder-wrap">
 						<div class='cherry-delete-sidebar-manager'>
-							<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
+							<span class="cherry-loader-wrapper"><span class="cherry-loader"></span></span>
 							<span class="dashicons dashicons-trash"></span>
 						</div>
 						<?php wp_list_widget_controls( $sidebar, $custom_sidebar['name'] ); // Show the control forms for each of the widgets in this sidebar ?>

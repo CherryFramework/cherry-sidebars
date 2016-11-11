@@ -35,14 +35,13 @@ class Cherry_Sidebars_Admin {
 	 * @return void
 	 */
 	public function __construct() {
-
 		// Load admin javascript and stylesheet.
-		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_assets' ), 1 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_assets' ) );
 
 		add_action( 'after_setup_theme', array( $this, 'widgets_ajax_page' ), 10 );
 		add_action( 'sidebar_admin_setup', array( $this, 'registrates_custom_sidebar' ), 10 );
 		add_action( 'widgets_admin_page', array( $this, 'edit_wp_registered_sidebars' ), 10 );
-		add_action( 'sidebar_admin_page', array( $this, 'widgets_page' ), 10 );
+		add_action( 'sidebar_admin_page', array( $this, 'widgets_page' ),10 );
 	}
 
 	/**
@@ -53,7 +52,6 @@ class Cherry_Sidebars_Admin {
 	 * @return void
 	 */
 	public function add_admin_assets( $hook_suffix ) {
-
 		if ( 'widgets.php' === $hook_suffix ) {
 			wp_register_script( 'cherry_admin_sidebars_js', trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/js/min/cherry-admin-sidebars.min.js', array( 'jquery' ), CHERRY_SIDEBARS_VERSION, true );
 			wp_register_style( 'cherry_admin_sidebars_css', trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/css/cherry-admin-sidebars.css', array(), CHERRY_SIDEBARS_VERSION, 'all' );

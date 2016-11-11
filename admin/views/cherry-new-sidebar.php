@@ -112,7 +112,7 @@ if ( ! function_exists( 'cherry_sidebars_add_custom_sidebar' ) ) {
 	?>
 		<div class="widgets-holder-wrap closed cherry-widgets-holder-wrap">
 			<div class='cherry-delete-sidebar-manager'>
-				<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
+				<span class="cherry-loader-wrapper"><span class="cherry-loader"></span></span>
 				<span class="dashicons dashicons-trash"></span>
 			</div>
 			<div id="<?php echo esc_attr( 'cherry-sidebars-' . $id ) ?>" class="widgets-sortables ui-sortable cherry-sidebars-manager">
