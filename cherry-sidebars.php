@@ -149,11 +149,11 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 * @since 1.0.0
 		 */
 		function admin() {
-			//if ( is_admin() ) {
 				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebar-utils.php' );
+			if ( is_admin() ) {
 				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebars-admin.php' );
 				require_once( CHERRY_SIDEBARS_DIR . 'admin/includes/class-cherry-custom-sidebar.php' );
-		//	}
+			}
 		}
 
 		/**
@@ -188,7 +188,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 				'base_url' => CHERRY_SIDEBARS_URI . 'cherry-framework',
 				'modules'  => array(
 					'cherry-js-core' => array(
-						'autoload' => true,
+						'autoload' => false,
 					),
 					'cherry-ui-elements' => array(
 						'autoload' => false,
@@ -203,8 +203,10 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 		 * @since 1.0.0
 		 */
 		function init_modules() {
-			cherry_sidebars()->get_core()->init_module( 'cherry-js-core' );
-			cherry_sidebars()->get_core()->init_module( 'cherry-ui-elements' );
+			if ( is_admin() ) {
+				cherry_sidebars()->get_core()->init_module( 'cherry-js-core' );
+				cherry_sidebars()->get_core()->init_module( 'cherry-ui-elements' );
+			}
 		}
 
 		/**

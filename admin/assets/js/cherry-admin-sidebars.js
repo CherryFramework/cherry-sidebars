@@ -51,6 +51,7 @@
 			$( 'input[type="text"]', formHandling.form ).removeClass( 'error-invalid' );
 		},
 		submitByttonHandler: function( event ) {
+
 			// Validated form
 			var formData = formHandling.form.serializeArray(),
 				key,
@@ -95,9 +96,6 @@
 			formHandling.ajaxRequest = $.ajax( {
 				data: formHandling.newSidebarData,
 				beforeSend: function() {
-					//formHandling.submitButton.attr( { 'disabled':true } );
-					//formHandling.spinner.css( { 'display':'block' } );
-
 					formHandling.disableButton( formHandling.submitButton );
 
 					if ( formHandling.ajaxRequest ) {
