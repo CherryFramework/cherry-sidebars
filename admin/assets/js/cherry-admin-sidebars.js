@@ -50,7 +50,7 @@
 		openThickBox: function() {
 			$( 'input[type="text"]', formHandling.form ).removeClass( 'error-invalid' );
 		},
-		submitByttonHandler: function( event ) {
+		submitByttonHandler: function() {
 
 			// Validated form
 			var formData = formHandling.form.serializeArray(),
