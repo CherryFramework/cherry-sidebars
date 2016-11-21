@@ -47,7 +47,7 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 		 * If is WPML - try to get original language ID>
 		 *
 		 * @param  int $object_id Current object ID.
-		 * @return void
+		 * @return int
 		 */
 		public function fix_wpml_id( $object_id = null ) {
 
