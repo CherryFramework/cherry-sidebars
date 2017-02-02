@@ -10,6 +10,11 @@
  * License:     GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path: /languages
+ *
+ * @package Cherry_Sidebars
+ * @author Template Monster
+ * @license GPL-3.0+
+ * @copyright 2002-2017, Template Monster
  */
 
 // If this file is called directly, abort.
