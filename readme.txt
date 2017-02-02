@@ -1,10 +1,10 @@
 === Cherry Sidebars ===
 
 Contributors: TemplateMonster 2002
-Tags: sidebar, sidebar manager, cherry framework, custom sidebars, widget area, group widgets, page custom sidebar, post custom sidebar
+Tags: sidebar, sidebar manager, cherry framework, custom sidebars, widget area, group widgets, page custom sidebar, post custom sidebar, custom sidebar, dynamic sidebar
 Requires at least: 4.4
-Tested up to: 4.6
-Stable tag: 1.0.4
+Tested up to: 4.7.2
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,22 @@ The plugin can be useful for certain posts or pages, where you want your content
 * For instance you can display widgets from the sidebar you've created in Primary Sidebar area.
 
 == Changelog ==
+
+= 1.1.0 =
+
+* ADD: Allow copy cutom sidebars into child theme on activation (add into parent theme functions.php add_theme_support( 'cherry_migrate_sidebars' );)
+
+= 1.0.5 =
+
+* UPD: Admin panel interface
+* UPD: Cherry Framework up to 1.3.1
+* FIX: Cherry framework include
+* FIX: error in php < 5.2
+
+= 1.0.4 =
+
+* FIX: Display sidebars in the widget list
+* FIX: List sidebars on pages and posts
 
 = 1.0.3 =
 

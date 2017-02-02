@@ -43,7 +43,22 @@ if ( ! class_exists( 'Cherry_Sidebar_Utils' ) ) {
 		 */
 		function __construct() {
 			$this->current_theme = wp_get_theme();
-			$this->get_theme_option = get_option( $this->current_theme->get_stylesheet() . '_sidebars', array() );
+			$this->get_theme_option = get_option( $this->option_key( $this->current_theme ), array() );
+		}
+
+		/**
+		 * Gets custom sidebars options key for passed theme.
+		 *
+		 * @param  WP_Theme $theme WP_Theme instance of the required theme.
+		 * @return string
+		 */
+		public function option_key( $theme ) {
+
+			if ( ! is_object( $theme ) ) {
+				return null;
+			}
+
+			return $theme->get_stylesheet() . '_sidebars';
 		}
 
 		/**
