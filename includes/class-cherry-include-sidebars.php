@@ -72,6 +72,11 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 				$custom_sidebar = $instance->get_custom_sidebar_array();
 
 				foreach ( $post_sidebars as $sidebar => $sidebar_value ) {
+
+					if ( empty( $widgets[ $sidebar_value ] ) ) {
+						continue;
+					}
+
 					if ( ! empty( $sidebar_value ) &&
 						 ( array_key_exists( $sidebar_value, $wp_registered_sidebars ) || array_key_exists( $sidebar_value, $custom_sidebar ) ) &&
 						 isset( $widgets[ $sidebar ] ) ) {
