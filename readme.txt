@@ -45,6 +45,7 @@ The plugin can be useful for certain posts or pages, where you want your content
 = 1.1.0 =
 
 * ADD: Allow copy cutom sidebars into child theme on activation (add into parent theme functions.php add_theme_support( 'cherry_migrate_sidebars' );)
+* FIX: Prevent errors on adding empty sidebar to page
 
 = 1.0.5 =
 
