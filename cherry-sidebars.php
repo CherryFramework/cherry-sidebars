@@ -57,7 +57,7 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 1 );
 
 			// Load the installer core.
-			add_action( 'after_setup_theme', require( trailingslashit( __DIR__ ) . 'cherry-framework/setup.php' ), 0 );
+			add_action( 'after_setup_theme', require( trailingslashit( dirname( __FILE__ ) ) . 'cherry-framework/setup.php' ), 0 );
 
 			// Load the core functions/classes required by the rest of the plugin.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
