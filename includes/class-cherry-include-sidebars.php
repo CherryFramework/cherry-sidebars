@@ -5,7 +5,7 @@
  * @package Cherry_Sidebars
  * @author Template Monster
  * @license GPL-3.0+
- * @copyright 2002-2016, Template Monster
+ * @copyright 2002-2017, Template Monster
  */
 
 if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {

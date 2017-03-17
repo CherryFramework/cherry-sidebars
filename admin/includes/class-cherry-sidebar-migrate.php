@@ -106,7 +106,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar_Migrate' ) ) {
 		 *
 		 * @param  WP_Theme $new_theme WP_Theme instance of the new theme.
 		 * @param  WP_Theme $old_theme WP_Theme instance of the old theme.
-		 * @return array    $existing  Existing sidebars array.
+		 * @return void
 		 */
 		public function migrate_sidebars( $new_theme, $old_theme, $existing ) {
 
