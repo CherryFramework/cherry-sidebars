@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Sidebars
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Plugin for creating and managing sidebars in WordPress.
- * Version:     1.1.0
+ * Version:     1.1.1
  * Author:      Cherry Team
  * Author URI:  http://www.cherryframework.com/git st
  * Text Domain: cherry-sidebars

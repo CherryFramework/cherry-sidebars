@@ -42,7 +42,14 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar_Migrate' ) ) {
 		 *
 		 * @var string
 		 */
-		public $transient = 'cherry_migrate_sidebars';
+		public $transient_custom = 'cherry_migrate_sidebars';
+
+		/**
+		 * Transient key to store default widgets in
+		 *
+		 * @var string
+		 */
+		public $transient_default = 'cherry_default_sidebars';
 
 		/**
 		 * Sets up the needed actions
@@ -52,7 +59,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar_Migrate' ) ) {
 		public function __construct() {
 
 			add_action( 'switch_theme', array( $this, 'maybe_migrate' ), 10, 3 );
-			add_action( 'after_switch_theme', array( $this, 'maybe_finalize_migration' ) );
+			add_action( 'after_switch_theme', array( $this, 'maybe_finalize_migration' ), 0 );
 		}
 
 		/**
@@ -88,17 +95,20 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar_Migrate' ) ) {
 		 */
 		public function maybe_finalize_migration() {
 
-			$to_migrate = get_transient( $this->transient );
+			$to_migrate = get_transient( $this->transient_custom );
 
 			if ( ! $to_migrate ) {
 				return;
 			}
 
-			$active_sidebars = get_option( 'sidebars_widgets' );
+			$active_sidebars = get_transient( $this->transient_default );
 			$active_sidebars = array_merge( $active_sidebars, $to_migrate );
 
+			remove_action( 'after_switch_theme', '_wp_sidebars_changed' );
+
 			update_option( 'sidebars_widgets', $active_sidebars );
-			delete_transient( $this->transient );
+			delete_transient( $this->transient_custom );
+			delete_transient( $this->transient_default );
 		}
 
 		/**
@@ -106,7 +116,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar_Migrate' ) ) {
 		 *
 		 * @param  WP_Theme $new_theme WP_Theme instance of the new theme.
 		 * @param  WP_Theme $old_theme WP_Theme instance of the old theme.
-		 * @return void
+		 * @return array    $existing  Existing sidebars array.
 		 */
 		public function migrate_sidebars( $new_theme, $old_theme, $existing ) {
 
@@ -123,7 +133,10 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar_Migrate' ) ) {
 				}
 			}
 
-			set_transient( $this->transient, $to_migrate, HOUR_IN_SECONDS );
+			$current = get_option( 'sidebars_widgets' );
+
+			set_transient( $this->transient_custom, $to_migrate, HOUR_IN_SECONDS );
+			set_transient( $this->transient_default, $current, HOUR_IN_SECONDS );
 			update_option( $this->utils->option_key( $new_theme ), $existing );
 		}
 

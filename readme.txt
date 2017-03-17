@@ -3,8 +3,8 @@
 Contributors: TemplateMonster 2002
 Tags: sidebar, sidebar manager, cherry framework, custom sidebars, widget area, group widgets, page custom sidebar, post custom sidebar, custom sidebar, dynamic sidebar
 Requires at least: 4.4
-Tested up to: 4.7.2
-Stable tag: 1.1.0
+Tested up to: 4.7.3
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,10 @@ The plugin can be useful for certain posts or pages, where you want your content
 * For instance you can display widgets from the sidebar you've created in Primary Sidebar area.
 
 == Changelog ==
+
+= 1.1.1 =
+
+* FIX: Prevent random placing sidebaras on migration to child
 
 = 1.1.0 =
 
