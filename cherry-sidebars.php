@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Cherry Sidebars
- * Plugin URI:  https://jetimpex.com/wordpress/
+ * Plugin URI:  https://zemez.io/wordpress/
  * Description: Plugin for creating and managing sidebars in WordPress.
- * Version:     1.1.2
- * Author:      Jetimpex
+ * Version:     1.1.2.1
+ * Author:      Zemez
  * Text Domain: cherry-sidebars
  * License:     GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
