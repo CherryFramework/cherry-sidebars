@@ -38,6 +38,8 @@ class Cherry_Sidebars_Admin {
 		// Load admin javascript and stylesheet.
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_assets' ) );
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'editor_fix' ), 99 );
+
 		add_action( 'after_setup_theme', array( $this, 'widgets_ajax_page' ), 10 );
 		add_action( 'sidebar_admin_setup', array( $this, 'registrates_custom_sidebar' ), 10 );
 		add_action( 'widgets_admin_page', array( $this, 'edit_wp_registered_sidebars' ), 10 );
@@ -62,6 +64,26 @@ class Cherry_Sidebars_Admin {
 			wp_enqueue_script( 'cherry_admin_sidebars_js' );
 			wp_enqueue_style( 'cherry_admin_sidebars_css' );
 		}
+	}
+
+	public function editor_fix() {
+
+		wp_enqueue_style(
+			'cherry-team-editor',
+			trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/css/editor.css',
+			array(),
+			CHERRY_SIDEBARS_VERSION
+		);
+
+		wp_dequeue_script( 'wp-color-picker-alpha' );
+
+		wp_register_script(
+			'wp-color-picker-alpha',
+			trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/js/wp-color-picker-alpha.min.js',
+			array( 'jquery', 'wp-color-picker' ),
+			CHERRY_SIDEBARS_VERSION,
+			true
+		);
 	}
 
 	/**
