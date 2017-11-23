@@ -68,6 +68,20 @@ class Cherry_Sidebars_Admin {
 
 	public function editor_fix() {
 
+		if ( ! defined( 'TM_BUILDER_VERSION' ) ) {
+			return;
+		}
+
+		global $wp_customize;
+
+		if ( $wp_customize ) {
+			return;
+		}
+
+		if ( ! wp_script_is( 'wp-color-picker-alpha' ) ) {
+			return;
+		}
+
 		wp_enqueue_style(
 			'cherry-team-editor',
 			trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/css/editor.css',
@@ -76,11 +90,14 @@ class Cherry_Sidebars_Admin {
 		);
 
 		wp_dequeue_script( 'wp-color-picker-alpha' );
+		wp_deregister_script( 'wp-color-picker-alpha' );
 
-		wp_register_script(
-			'wp-color-picker-alpha',
+		wp_enqueue_script( 'wp-color-picker' );
+
+		wp_enqueue_script(
+			'wp-color-picker-alpha-new',
 			trailingslashit( CHERRY_SIDEBARS_URI ) . 'admin/assets/js/wp-color-picker-alpha.min.js',
-			array( 'jquery', 'wp-color-picker' ),
+			array( 'jquery' ),
 			CHERRY_SIDEBARS_VERSION,
 			true
 		);
