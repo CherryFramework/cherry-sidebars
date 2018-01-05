@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Sidebars
  * Plugin URI:  https://zemez.io/wordpress/
  * Description: Plugin for creating and managing sidebars in WordPress.
- * Version:     1.1.2.3
+ * Version:     1.1.2.4
  * Author:      Zemez
  * Text Domain: cherry-sidebars
  * License:     GPL-3.0+
@@ -191,6 +191,9 @@ if ( ! class_exists( 'Cherry_Sidebars' ) ) {
 						'autoload' => false,
 					),
 					'cherry-ui-elements' => array(
+						'autoload' => false,
+					),
+					'cherry-interface-builder' => array(
 						'autoload' => false,
 					),
 				),
