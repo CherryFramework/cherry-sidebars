@@ -39,7 +39,35 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
+			add_filter( 'cherry_sidebar_manager_object_id', array( $this, 'fix_wpml_id' ) );
 			add_filter( 'sidebars_widgets', array( $this, 'set_custom_sidebar' ), 10, 1 );
+		}
+
+		/**
+		 * If is WPML - try to get original language ID>
+		 *
+		 * @param  int $object_id Current object ID.
+		 * @return int
+		 */
+		public function fix_wpml_id( $object_id = null ) {
+
+			if ( ! is_singular() ) {
+				return $object_id;
+			}
+
+			if ( ! class_exists( 'SitePress' ) ) {
+				return $object_id;
+			}
+
+			global $sitepress;
+			$id = icl_object_id( get_the_id(), get_post_type(), true, $sitepress->get_default_language() );
+
+			if ( $id ) {
+				return $id;
+			} else {
+				return $object_id;
+			}
+
 		}
 
 		/**
@@ -65,6 +93,10 @@ if ( ! class_exists( 'Cherry_Include_Sidebars' ) ) {
 			}
 
 			$post_sidebars = get_post_meta( apply_filters( 'cherry_sidebar_manager_object_id', $object_id ), 'post_sidebar', true );
+
+			if ( ! empty( $post_sidebars ) && is_string( $post_sidebars ) ) {
+				$post_sidebars = maybe_unserialize( $post_sidebars );
+			}
 
 			if ( $post_sidebars && ! empty( $post_sidebars ) ) {
 
